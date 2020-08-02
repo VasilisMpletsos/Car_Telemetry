@@ -11,8 +11,10 @@ server.listen(3000,()=>{
 });
 
 io.on('connection',(socket)=>{
-  console.log('New Web Socket Connection!');
-  socket.emit('Welcome')
+  socket.emit('welcome');
+  socket.on('steeringData',(rotation)=>{
+    io.emit('steeringUpdate',rotation)
+  })
 })
 
 app.use(express.static(__dirname + '/public'));
