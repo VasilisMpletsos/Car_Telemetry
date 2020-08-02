@@ -9,19 +9,33 @@ body{
   margin-top: 3%;
 }
 
-.information{
+.informationLeft{
   word-break: normal;
-  width: 80%;
+  width: 89%;
   text-align: justify;
   margin-top: 12%;
   font-size: 22px;
   word-spacing: 2px;
 }
 
+.informationRight{
+  word-break: normal;
+  width: 80%;
+  text-align: justify;
+  margin-top: 12%;
+  font-size: 22px;
+  word-spacing: 2px;
+  margin-left: 11%;
+}
+
 .telemetry{
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .row{
   width: 100%;
+}
+
+.rpm{
+  margin-top: 6%;
 }

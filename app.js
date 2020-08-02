@@ -24,8 +24,15 @@ app.get('/testing',(req,res)=>{
   res.redirect('html/testing.html');
 })
 
-app.post('/update',(req,res)=>{
+app.post('/updateSteering',(req,res)=>{
   let rotation = req.body.rotation;
   io.emit('steeringUpdate',rotation);
+  res.send('OK');
+})
+
+app.post('/updateRpm',(req,res)=>{
+  console.log();
+  let rpm = req.body.rpm;
+  io.emit('rpmUpdate',rpm);
   res.send('OK');
 })

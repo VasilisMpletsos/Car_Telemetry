@@ -25,6 +25,9 @@
         <a class="nav-link" href="#steer">Steering</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="#rpm">RPM</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Tempratures</a>
       </li>
       <li class="nav-item">
@@ -42,13 +45,46 @@
     </div>
 
     <div class="col">
-      <div class="information">
+      <div class="informationLeft">
           Here you can see the data of the steering wheel telemetry.
           We use an axial steering wheel, connected with a tied rode to wheels
           maximizng efficiency!
       </div>
     </div>
   </div>
+
+  <svg height="5" width="100%">
+    <line x1="5%" y1="0" x2="95%" y2="0" style="stroke:rgb(0,0,0);stroke-width:4" />
+  </svg>
+
+  <div class="row" id="rpms">
+    <div class="col">
+      <div class="informationRight">
+          RPMs are showing the revs per minute of the engine! We work best at 8000rpm
+          where we have our maximum horse power production!
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="box">
+        <h2>RPMs</h><br>
+          <div class="rpm" id="rpm">
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/telemetry.js"></script>
