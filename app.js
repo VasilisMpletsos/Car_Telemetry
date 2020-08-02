@@ -20,11 +20,12 @@ app.get('/',(req,res)=>{
   res.redirect('html/index.html');
 })
 
+app.get('/testing',(req,res)=>{
+  res.redirect('html/testing.html');
+})
+
 app.post('/update',(req,res)=>{
   let rotation = req.body.rotation;
   io.emit('steeringUpdate',rotation);
-  res.send(
-    {success: 'Sucess',
-      info: 'Data were sent'
-    })
+  res.send('OK');
 })
