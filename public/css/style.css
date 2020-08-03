@@ -3,6 +3,10 @@ body{
   font-family: serif;
 }
 
+.start{
+  margin-top: 5%;
+}
+
 .box{
   width: 100%;
   text-align: center;
