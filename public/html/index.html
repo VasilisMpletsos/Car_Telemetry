@@ -9,11 +9,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="#">
       <img src="/images/art.jpg" style="width:60px;">
@@ -28,10 +29,10 @@
         <a class="nav-link" href="#rpm">RPM</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tempratures</a>
+        <a class="nav-link" href="#temp">Tempratures</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Suspensions</a>
+        <a class="nav-link" href="#susp">Suspension</a>
       </li>
     </ul>
   </nav>
@@ -45,7 +46,7 @@
     </div>
 
     <div class="col">
-      <div class="informationLeft">
+      <div class="informationRight">
           Here you can see the data of the steering wheel telemetry.
           We use an axial steering wheel, connected with a tied rode to wheels
           maximizng efficiency!
@@ -53,35 +54,77 @@
     </div>
   </div>
 
-  <svg height="5" width="100%">
-    <line x1="5%" y1="0" x2="95%" y2="0" style="stroke:rgb(0,0,0);stroke-width:4" />
+  <svg height="10" width="100%">
+    <line x1="0" y1="0" x2="100%" y2="0" style="stroke:rgb(0,0,0);stroke-width:2" />
   </svg>
 
-  <div class="row" id="rpms">
+  <div class="row" id="rpm">
     <div class="col">
-      <div class="informationRight">
-          RPMs are showing the revs per minute of the engine! We work best at 8000rpm
-          where we have our maximum horse power production!
+      <div class="informationLeft">
+        RPMs is the number of turns in one minute. It is a unit of rotational speed
+        or the frequency of rotation around a fixed axis.Generally cloudflare FSAE car is operating
+        at it's best on 8000 ~ 10000 rpm.
       </div>
     </div>
 
     <div class="col">
       <div class="box">
         <h2>RPMs</h><br>
-          <div class="rpm" id="rpm">
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
-            <svg height="50" width="50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+          <div class="rpm">
+            <svg height="50" width="50"><circle id="led1" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led2" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led3" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led4" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led5" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led6" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led7" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led8" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led9" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led10" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led11" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
+            <svg height="50" width="50"><circle id="led12" cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" /></svg>
           </div>
+        </div>
+      </div>
+    </div>
+
+  <svg height="10" width="100%">
+    <line x1="0" y1="0" x2="100%" y2="0" style="stroke:rgb(0,0,0);stroke-width:2" />
+  </svg>
+
+  <div class="row" id="temp">
+    <div class="col">
+      <div class="box">
+        <h2>Tempratures</h><br><br>
+        <center><div id="chart_div" style="width: 400px; height: 120px;"></div></center>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="informationRight">
+          Tempratures play an important role in the operation of the vehicle.
+          Monitoring them in a Formula Sae Car is a must and if you want to achieve best
+          operation you have to work to the limit.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row box2" id="susp">
+    <svg height="10" width="100%">
+      <line x1="0" y1="0" x2="100%" y2="0" style="stroke:rgb(0,0,0);stroke-width:2" />
+    </svg>
+    <div class="col">
+      <div class="informationLeft">
+        RPMs is the number of turns in one minute. It is a unit of rotational speed
+        or the frequency of rotation around a fixed axis.
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="box">
+        <h2>Suspension</h><br>
+
         </div>
       </div>
     </div>

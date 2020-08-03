@@ -1,22 +1,19 @@
 const socket = io()
 
 while(true){
- let degrees = Math.floor((Math.random()*181)-90);
- let rpm = Math.floor(Math.random()*13000);
- sleepFor(4000);
+ let rotation = Math.floor((Math.random()*181)-90);
+ let rpm = Math.floor(Math.random()*9000+3001);
+ let temp1 = Math.floor(Math.random()*120);
+ let temp2 = Math.floor(Math.random()*120);
+ let temp3 = Math.floor(Math.random()*120);
+ let temp4 = Math.floor(Math.random()*120);
+ sleepFor(2000);
  $.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
-    url: '/updateSteering',
-    data: JSON.stringify({rotation: degrees})
+    url: '/update',
+    data: JSON.stringify({rotation,rpm,temp1,temp2,temp3,temp4})
   });
-
-  $.ajax({
-     type: "POST",
-     contentType: "application/json; charset=utf-8",
-     url: '/updateRpm',
-     data: JSON.stringify({rpm: rpm})
-   });
 }
 
 function sleepFor( sleepDuration ){
