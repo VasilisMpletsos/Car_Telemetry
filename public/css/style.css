@@ -1,5 +1,5 @@
 body{
-  background-color: #c7d62e;
+  background-color: #43aedc;
   font-family: serif;
 }
 
@@ -39,6 +39,7 @@ body{
 
 .telemetry{
   transition: 1s;
+  transition-timing-function: linear;
 }
 
 .row{

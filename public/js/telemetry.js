@@ -6,8 +6,11 @@ const rpms = document.getElementById('rpm');
 
 
 socket.on('update',(data)=>{
+  console.log(data);
   //Steering Wheel Section
   steeringWheel.style.transform = `rotate(${data.rotation}deg)`;
+
+  // susp.setAttribute('transform','rotate(15 80 70)')
 
   //RPM Section
   let green = data.rpm / 1000;
@@ -18,8 +21,18 @@ socket.on('update',(data)=>{
     document.getElementById(`led${i}`).style="fill:green";
   }
 
-
+  //Temprature Section
   updateChart(data.temp1,data.temp2,data.temp3,data.temp4);
+
+  //Suspension Section
+  let cfl = getColorForPercentage(data.frontLeft);
+  let cfr = getColorForPercentage(data.frontRight);
+  let crl = getColorForPercentage(data.rearLeft);
+  let crr = getColorForPercentage(data.rearRight);
+  document.getElementById('frontLeft').style=`fill:${cfl}`
+  document.getElementById('frontRight').style=`fill:${cfr}`
+  document.getElementById('rearLeft').style=`fill:${crl}`
+  document.getElementById('rearRight').style=`fill:${crr}`
 })
 
 google.charts.load('current', {'packages':['gauge']});
@@ -55,3 +68,29 @@ function updateChart(temp1=0,temp2=0,temp3=0,temp4=0){
   window.data.setValue(3, 1, temp4);
   window.chart.draw(window.data, window.options);
 }
+
+var percentColors = [
+    { pct: 0.0, color: { r: 0x00, g: 0xff, b: 0 } },
+    { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
+    { pct: 1.0, color: { r: 0xff, g: 0x00, b: 0 } } ];
+
+var getColorForPercentage = function(pct) {
+    for (var i = 1; i < percentColors.length - 1; i++) {
+        if (pct < percentColors[i].pct) {
+            break;
+        }
+    }
+    var lower = percentColors[i - 1];
+    var upper = percentColors[i];
+    var range = upper.pct - lower.pct;
+    var rangePct = (pct - lower.pct) / range;
+    var pctLower = 1 - rangePct;
+    var pctUpper = rangePct;
+    var color = {
+        r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
+        g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
+        b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper)
+    };
+    return 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
+    // or output as hex if preferred
+};
