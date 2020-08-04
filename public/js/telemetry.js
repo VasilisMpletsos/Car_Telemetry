@@ -10,7 +10,9 @@ socket.on('update',(data)=>{
   //Steering Wheel Section
   steeringWheel.style.transform = `rotate(${data.rotation}deg)`;
 
-  // susp.setAttribute('transform','rotate(15 80 70)')
+  const steer = data.rotation * 0.15;
+  document.getElementById('frontLeft').setAttribute('transform',`rotate(${steer} 90 70)`)
+  document.getElementById('frontRight').setAttribute('transform',`rotate(${steer} 410 70)`)
 
   //RPM Section
   let green = data.rpm / 1000;
@@ -29,10 +31,10 @@ socket.on('update',(data)=>{
   let cfr = getColorForPercentage(data.frontRight);
   let crl = getColorForPercentage(data.rearLeft);
   let crr = getColorForPercentage(data.rearRight);
-  document.getElementById('frontLeft').style=`fill:${cfl}`
-  document.getElementById('frontRight').style=`fill:${cfr}`
-  document.getElementById('rearLeft').style=`fill:${crl}`
-  document.getElementById('rearRight').style=`fill:${crr}`
+  document.getElementById('frontLeft').style=`fill:${cfl}`;
+  document.getElementById('frontRight').style=`fill:${cfr}`;
+  document.getElementById('rearLeft').style=`fill:${crl}`;
+  document.getElementById('rearRight').style=`fill:${crr}`;
 })
 
 google.charts.load('current', {'packages':['gauge']});
