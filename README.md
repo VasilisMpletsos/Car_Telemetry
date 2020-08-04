@@ -27,4 +27,6 @@ Then got to localhost:3000
 If you want to see random data, open new window and go to localhost:3000/testing
 
 ## Things to do:
-1. Add informations
+* Add informations
+* Add more Sensors Visualizations
+* Optimize Layout 
